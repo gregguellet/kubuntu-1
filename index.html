@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Kubuntu - 8 septembre 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="floating-timer" id="timer">
+        ⏰ Formation en cours...
+    </div>
+
+    <div class="header">
+        <h1>🐧 Formation Kubuntu</h1>
+        <div class="date">Lundi 8 septembre 2025 - Durée: 5h</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="timeline">
+            
+            <!-- Section 9h00 - Préparation -->
+            <div class="section left" data-time="9h00">
+                <div class="time-badge">9h00</div>
+                <h2>🔌 Préparation du matériel</h2>
+                <p>Nous commençons par brancher les PC sur secteur, <strong>sans les allumer</strong>.</p>
+                <div class="step" onclick="toggleStep(this)">
+                    Vérifier que tous les ordinateurs sont branchés
+                </div>
+                <div class="step" onclick="toggleStep(this)">
+                    S'assurer que personne n'allume son PC pour le moment
+                </div>
+            </div>
+
+            <!-- Section 9h10 - Présentation Kubuntu -->
+            <div class="section right" data-time="9h10">
+                <div class="time-badge">9h10</div>
+                <h2>🖥️ Qu'est-ce que Kubuntu ?</h2>
+                <p>Rappel de ce qu'est Kubuntu (Ubuntu avec bureau KDE) et pourquoi nous avons choisi cette distribution.</p>
+                
+                <div class="os-gallery">
+                    <div class="os-card" onclick="selectOS(this, 'Linux')" data-os="linux">
+                        <div class="icon">🐧</div>
+                        <h3>Linux</h3>
+                        <p>Open source et gratuit</p>
+                    </div>
+                    <div class="os-card" onclick="selectOS(this, 'macOS')" data-os="macos">
+                        <div class="icon">🍎</div>
+                        <h3>macOS</h3>
+                        <p>Système Apple</p>
+                    </div>
+                    <div class="os-card" onclick="selectOS(this, 'Windows')" data-os="windows">
+                        <div class="icon">🪟</div>
+                        <h3>Windows</h3>
+                        <p>Microsoft</p>
+                    </div>
+                    <div class="os-card" onclick="selectOS(this, 'Android')" data-os="android">
+                        <div class="icon">🤖</div>
+                        <h3>Android</h3>
+                        <p>Système mobile</p>
+                    </div>
+                </div>
+                <div id="osInfo" style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px; display: none;"></div>
+            </div>
+
+            <!-- Section 9h30 - Allumage et routine -->
+            <div class="section left" data-time="9h30">
+                <div class="time-badge">9h30</div>
+                <h2>🔑 Première connexion</h2>
+                <div class="objectives">
+                    <h3>Objectifs :</h3>
+                    <ul>
+                        <li>Reprise en main progressive du système</li>
+                        <li>Mise en place d'une routine à l'allumage</li>
+                    </ul>
+                </div>
+                
+                <p>Chaque apprenant allume son PC et saisit le mot de passe : <strong>lee</strong></p>
+                
+                <h3>🔄 Mise en place de la routine de mise à jour</h3>
+                <p>Sur Linux, contrairement à Windows, la mise à jour n'est pas automatique.</p>
+
+                <div class="method-tabs">
+                    <button class="tab active" onclick="showTab('manual')">Méthode 1 - Manuelle</button>
+                    <button class="tab" onclick="showTab('gui')">Méthode 2 - Interface</button>
+                </div>
+
+                <div id="manual" class="tab-content active">
+                    <h4>🖥️ Avec l'application "Konsole"</h4>
+                    <div class="steps-list">
+                        <div class="step" onclick="toggleStep(this)">Ouvrir l'application "Konsole" depuis le lanceur</div>
+                        <div class="step" onclick="toggleStep(this)">Taper la commande suivante :</div>
+                    </div>
+                    
+                    <div class="command-box" onclick="copyCommand(this)">
+                        <span id="typingCommand">sudo apt update && sudo apt upgrade -y</span>
+                    </div>
+                    
+                    <div class="steps-list">
+                        <div class="step" onclick="toggleStep(this)">Appuyer sur ENTER</div>
+                        <div class="step" onclick="toggleStep(this)">Taper le mot de passe : <strong>lee</strong></div>
+                        <div class="step" onclick="toggleStep(this)">Appuyer sur ENTER et laisser faire</div>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Astuce :</strong> Pour refaire cette opération, utilisez la flèche "↑" dans la Konsole pour récupérer la commande précédente !
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Important :</strong> Kubuntu demandera toujours votre mot de passe pour les opérations système, c'est normal et sécurisé.
+                    </div>
+                </div>
+
+                <div id="gui" class="tab-content">
+                    <h4>🎯 Avec l'utilitaire de mise à jour</h4>
+                    <div class="steps-list">
+                        <div class="step" onclick="toggleStep(this)">Aller sur "Discover" (en bas à gauche)</div>
+                        <div class="step" onclick="toggleStep(this)">Cliquer sur "Mettre à jour"</div>
+                        <div class="step" onclick="toggleStep(this)">Tout sélectionner</div>
+                        <div class="step" onclick="toggleStep(this)">Cliquer sur "Tout mettre à jour"</div>
+                        <div class="step" onclick="toggleStep(this)">Saisir votre mot de passe quand demandé</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pause 10h30 -->
+            <div class="section right" data-time="10h30" style="background: linear-gradient(45deg, #ff7675, #fd79a8); color: white;">
+                <div class="time-badge">10h30</div>
+                <h2>☕ Pause - 30 minutes</h2>
+                <p style="font-size: 1.2em; text-align: center;">Temps de récupération bien mérité !</p>
+            </div>
+
+            <!-- Section 11h00 - Installation MEGA -->
+            <div class="section left" data-time="11h00">
+                <div class="time-badge">11h00</div>
+                <h2>📦 Installation d'applications</h2>
+                <div class="objectives">
+                    <h3>Objectifs :</h3>
+                    <ul>
+                        <li>Approfondir ses connaissances sur Linux</li>
+                        <li>Enrichir son vocabulaire technique</li>
+                        <li>Maîtriser les raccourcis clavier</li>
+                        <li>Comprendre l'importance de la sécurité</li>
+                    </ul>
+                </div>
+
+                <h3>🔍 Identifier votre version système</h3>
+                <div class="note-box">
+                    <strong>Important :</strong> Avant d'installer des applications, vous devez connaître la version de votre système.
+                </div>
+
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Ouvrir le lanceur d'applications</div>
+                    <div class="step" onclick="toggleStep(this)">Chercher "Configuration du système"</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "À propos du système"</div>
+                    <div class="step" onclick="toggleStep(this)">Noter la version (ex: Kubuntu 24.04)</div>
+                </div>
+            </div>
+
+            <!-- Installation MEGA -->
+            <div class="section right" data-time="11h30">
+                <div class="time-badge">11h30</div>
+                <h2>☁️ Installation de MEGA</h2>
+                <p>MEGA nous servira pour le partage de fichiers et la synchronisation entre appareils.</p>
+
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Ouvrir le navigateur</div>
+                    <div class="step" onclick="toggleStep(this)">Aller sur <strong>mega.io</strong></div>
+                    <div class="step" onclick="toggleStep(this)">Passer le site en français si nécessaire</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "Produits" puis "Sauvegarde"</div>
+                    <div class="step" onclick="toggleStep(this)">Télécharger l'appli MEGA pour ordinateur</div>
+                </div>
+            </div>
+
+            <!-- Pause déjeuner -->
+            <div class="section left" data-time="12h00" style="background: linear-gradient(45deg, #00b894, #27ae60); color: white;">
+                <div class="time-badge">12h00</div>
+                <h2>🍽️ Pause déjeuner - 1 heure</h2>
+                <p style="font-size: 1.2em; text-align: center;">Bon appétit à tous !</p>
+            </div>
+
+            <!-- Suite installation -->
+            <div class="section right" data-time="13h00">
+                <div class="time-badge">13h00</div>
+                <h2>⚙️ Configuration MEGA</h2>
+                
+                <h3>📥 Téléchargement et installation</h3>
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Onglet "LINUX", changer "Arch Linux" en "Ubuntu"</div>
+                    <div class="step" onclick="toggleStep(this)">Sélectionner votre version (ex: Ubuntu 24.04)</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "Télécharger"</div>
+                    <div class="step" onclick="toggleStep(this)">Copier le code d'installation</div>
+                    <div class="step" onclick="toggleStep(this)">Ouvrir la Konsole</div>
+                    <div class="step" onclick="toggleStep(this)">Coller avec clic droit (pas Ctrl+V !)</div>
+                    <div class="step" onclick="toggleStep(this)">Appuyer sur ENTER</div>
+                    <div class="step" onclick="toggleStep(this)">Saisir le mot de passe : <strong>lee</strong></div>
+                    <div class="step" onclick="toggleStep(this)">Taper Y puis ENTER</div>
+                    <div class="step" onclick="toggleStep(this)">Taper O puis ENTER</div>
+                </div>
+
+                <div class="note-box">
+                    <strong>Attention :</strong> L'installation n'est pas terminée ! Il faut maintenant intégrer MEGA au gestionnaire de fichiers.
+                </div>
+            </div>
+
+            <!-- Intégration gestionnaire -->
+            <div class="section left" data-time="13h30">
+                <div class="time-badge">13h30</div>
+                <h2>🗂️ Intégration au gestionnaire</h2>
+                
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Retourner sur mega.io, même page</div>
+                    <div class="step" onclick="toggleStep(this)">Chercher "intégration de MEGA au gestionnaire"</div>
+                    <div class="step" onclick="toggleStep(this)">Choisir "Ubuntu"</div>
+                    <div class="step" onclick="toggleStep(this)">Survoler le gestionnaire de fichiers pour voir son nom</div>
+                    <div class="step" onclick="toggleStep(this)">Chercher "Dolphin Ubuntu 24.04" dans la liste</div>
+                    <div class="step" onclick="toggleStep(this)">Télécharger</div>
+                </div>
+
+                <h3>📂 Installation de l'intégration</h3>
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Ouvrir le gestionnaire de fichiers</div>
+                    <div class="step" onclick="toggleStep(this)">Aller dans "Téléchargements"</div>
+                    <div class="step" onclick="toggleStep(this)">Double-clic sur le fichier téléchargé</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "Install Package"</div>
+                </div>
+            </div>
+
+            <!-- Configuration finale -->
+            <div class="section right" data-time="14h00">
+                <div class="time-badge">14h00</div>
+                <h2>🔐 Configuration du compte</h2>
+                
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Dans le lanceur, taper "MEGA"</div>
+                    <div class="step" onclick="toggleStep(this)">Ouvrir "MEGASync"</div>
+                    <div class="step" onclick="toggleStep(this)">Compléter le formulaire de connexion</div>
+                </div>
+
+                <div class="credentials-box">
+                    <h3>🔑 Identifiants de connexion</h3>
+                    <div class="credential">
+                        <strong>Adresse e-mail :</strong><br>
+                        bw.cdp@lire-et-ecrire.be
+                    </div>
+                    <div class="credential">
+                        <strong>Mot de passe :</strong><br>
+                        52526372
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step" onclick="toggleStep(this)">Changer le nom de l'appareil : TUBIZE + numéro (ex: TUBIZE7)</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "Suivant" × 3</div>
+                    <div class="step" onclick="toggleStep(this)">Cliquer sur "Terminé"</div>
+                </div>
+
+                <div style="background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;">
+                    <h3>🎉 TERMINÉ ! MEGA est installé !</h3>
+                    <p>Pour accéder à MEGA : Gestionnaire de fichiers → Dossier personnel → MEGA</p>
+                </div>
+            </div>
+
+            <!-- Fin de formation -->
+            <div class="section left" data-time="15h00" style="background: linear-gradient(45deg, #fd79a8, #fdcb6e); color: white;">
+                <div class="time-badge">15h00</div>
+                <h2>🏁 Fin de formation</h2>
+                <p style="font-size: 1.3em; text-align: center;">
+                    Bravo ! Vous maîtrisez maintenant les bases de Kubuntu et avez installé votre premier logiciel !
+                </p>
+                <div style="margin-top: 20px; text-align: center;">
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; display: inline-block;">
+                        <strong>📚 Récapitulatif des compétences acquises :</strong><br>
+                        • Navigation dans Kubuntu<br>
+                        • Mise à jour du système<br>
+                        • Installation d'applications<br>
+                        • Configuration de MEGA
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer avec informations formateur -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="formateur-info">
+                <div class="formateur-title">👨‍🏫 Votre Formateur</div>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-title">E-mail</div>
+                        <div class="contact-info">gregory.guellet@lire-et-ecrire.be</div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">📱</span>
+                        <div class="contact-title">Téléphone</div>
+                        <div class="contact-info">0478 80 33 85</div>
+                    </div>
+                </div>
+
+                <div class="horaires-section">
+                    <div class="horaires-title">📅 Horaires de disponibilité</div>
+                    <div class="horaires-grid">
+                        <div class="horaire-item">
+                            <div class="horaire-type">🎓 En Formation</div>
+                            <div class="horaire-details">
+                                Lundi & Jeudi<br>
+                                9h00 - 15h00
+                            </div>
+                        </div>
+                        
+                        <div class="horaire-item">
+                            <div class="horaire-type">💬 Disponibilité</div>
+                            <div class="horaire-details">
+                                Lundi : 15h00 - 15h30<br>
+                                Mercredi : 9h00 - 15h30<br>
+                                Jeudi : 15h00 - 15h30
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <h3 style="color: #3498db; margin-bottom: 15px;">🏢 Lire et Écrire Brabant wallon</h3>
+                    <p style="font-size: 1.1em; line-height: 1.6;">
+                        Formation en alphabétisation et informatique<br>
+                        Accompagnement personnalisé • Apprentissage adapté • Progression à votre rythme
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="scrollToTop()">↑ Haut</button>
+        <button class="nav-btn" onclick="toggleTimer()">⏰ Timer</button>
+    </div>
+
+    <script>
+        let currentTime = new Date();
+        currentTime.setHours(9, 0, 0, 0); // Début à 9h00
+        let isTimerRunning = false;
+        let timerInterval;
+
+        // Animation d'apparition des sections
+        function animateSections() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        updateProgress();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Sélection des OS
+        function selectOS(card, osName) {
+            // Retirer la sélection précédente
+            document.querySelectorAll('.os-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            
+            const info = document.getElementById('osInfo');
+            const osData = {
+                'Linux': {
+                    description: 'Linux (comme Kubuntu) est un système d\'exploitation libre et gratuit, très sécurisé et personnalisable.',
+                    advantages: '✓ Gratuit ✓ Sécurisé ✓ Rapide ✓ Pas de virus'
+                },
+                'macOS': {
+                    description: 'macOS est le système d\'exploitation d\'Apple, réputé pour sa simplicité et son design.',
+                    advantages: '✓ Interface élégante ✓ Intégration Apple ✓ Stable'
+                },
+                'Windows': {
+                    description: 'Windows est le système le plus répandu, développé par Microsoft.',
+                    advantages: '✓ Compatible ✓ Familier ✓ Beaucoup de logiciels'
+                },
+                'Android': {
+                    description: 'Android est le système mobile le plus utilisé au monde, basé sur Linux.',
+                    advantages: '✓ Mobile ✓ Applications ✓ Google services'
+                }
+            };
+            
+            info.innerHTML = `
+                <h4>${osName}</h4>
+                <p>${osData[osName].description}</p>
+                <div style="margin-top: 10px; color: #27ae60; font-weight: bold;">
+                    ${osData[osName].advantages}
+                </div>
+            `;
+            info.style.display = 'block';
+        }
+
+        // Gestion des onglets
+        function showTab(tabName) {
+            // Cacher tous les contenus
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Désactiver tous les onglets
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activer l'onglet sélectionné
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Animation de frappe pour les commandes
+        function typeCommand() {
+            const commandElement = document.getElementById('typingCommand');
+            const command = 'sudo apt update && sudo apt upgrade -y';
+            let i = 0;
+            
+            commandElement.textContent = '';
+            commandElement.classList.add('typing-animation');
+            
+            const typeInterval = setInterval(() => {
+                if (i < command.length) {
+                    commandElement.textContent += command.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    commandElement.classList.remove('typing-animation');
+                }
+            }, 100);
+        }
+
+        // Copier la commande
+        function copyCommand(element) {
+            const command = element.textContent.replace('$ ', '');
+            navigator.clipboard.writeText(command).then(() => {
+                element.style.background = '#27ae60';
+                element.innerHTML = '$ ' + command + ' <span style="float: right;">✓ Copié!</span>';
+                setTimeout(() => {
+                    element.style.background = '#2c3e50';
+                    element.innerHTML = '$ ' + command;
+                }, 2000);
+            });
+        }
+
+        // Toggle des étapes
+        function toggleStep(step) {
+            step.classList.toggle('completed');
+            
+            // Animation de succès
+            if (step.classList.contains('completed')) {
+                step.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    step.style.transform = '';
+                }, 200);
+            }
+        }
+
+        // Mise à jour de la barre de progression
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section.visible');
+            const totalSections = document.querySelectorAll('.section').length;
+            const progress = (sections.length / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Timer de formation
+        function toggleTimer() {
+            isTimerRunning = !isTimerRunning;
+            
+            if (isTimerRunning) {
+                timerInterval = setInterval(() => {
+                    currentTime.setMinutes(currentTime.getMinutes() + 1);
+                    updateTimerDisplay();
+                }, 60000); 
+            } else {
+                clearInterval(timerInterval);
+            }
+            
+            updateTimerButton();
+        }
+
+        function updateTimerDisplay() {
+            const timer = document.getElementById('timer');
+            const hours = currentTime.getHours().toString().padStart(2, '0');
+            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            
+            let status = '⏰ Formation en cours...';
+            let color = '#333';
+            
+            // Déterminer la phase actuelle
+            const timeString = hours + ':' + minutes;
+            if (timeString < '09:10') {
+                status = '🔌 Préparation du matériel';
+                color = '#e74c3c';
+            } else if (timeString < '09:30') {
+                status = '🖥️ Présentation Kubuntu';
+                color = '#3498db';
+            } else if (timeString < '10:30') {
+                status = '🔄 Routine de mise à jour';
+                color = '#f39c12';
+            } else if (timeString < '11:00') {
+                status = '☕ Pause';
+                color = '#8e44ad';
+            } else if (timeString < '12:00') {
+                status = '📦 Installation d\'applications';
+                color = '#27ae60';
+            } else if (timeString < '13:00') {
+                status = '🍽️ Pause déjeuner';
+                color = '#e67e22';
+            } else if (timeString < '15:00') {
+                status = '☁️ Configuration MEGA';
+                color = '#2980b9';
+            } else {
+                status = '🎉 Formation terminée !';
+                color = '#27ae60';
+            }
+            
+            timer.innerHTML = `${status}<br><strong>${hours}:${minutes}</strong>`;
+            timer.style.background = `linear-gradient(45deg, ${color}, rgba(0,0,0,0.8))`;
+        }
+
+        function updateTimerButton() {
+            const button = document.querySelector('.nav-btn:last-child');
+            button.textContent = isTimerRunning ? '⏸️ Pause' : '▶️ Start';
+        }
+
+        // Retour en haut
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Raccourcis clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && e.target === document.body) {
+                e.preventDefault();
+                toggleTimer();
+            }
+            if (e.key === 'ArrowUp' && e.ctrlKey) {
+                e.preventDefault();
+                scrollToTop();
+            }
+        });
+
+        // Notifications de progression
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.5s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Animation CSS pour les notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            .section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+            
+            .command-box:hover {
+                transform: scale(1.02);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            }
+            
+            .step {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .credentials-box:hover {
+                transform: scale(1.05);
+            }
+            
+            /* Animation de pulsation pour les éléments importants */
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+                70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+            }
+            
+            .note-box:hover {
+                animation: pulse 1.5s infinite;
+            }
+            
+            /* Effet de brillance sur les cartes OS */
+            .os-card::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+                transform: rotate(45deg);
+                transition: all 0.5s ease;
+                opacity: 0;
+            }
+            
+            .os-card:hover::after {
+                opacity: 1;
+                transform: rotate(45deg) translate(50%, 50%);
+            }
+
+            /* Animation pour le footer */
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Style initial du footer */
+            .footer {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Détection de l'avancement automatique
+        function checkProgress() {
+            const completedSteps = document.querySelectorAll('.step.completed').length;
+            const totalSteps = document.querySelectorAll('.step').length;
+            
+            if (completedSteps > 0 && completedSteps % 5 === 0) {
+                showNotification(`Excellents progrès ! ${completedSteps}/${totalSteps} étapes complétées`);
+            }
+            
+            if (completedSteps === totalSteps) {
+                showNotification('🎉 Toutes les étapes sont terminées ! Félicitations !');
+            }
+        }
+
+        // Observer les changements d'étapes
+        const stepObserver = new MutationObserver(() => {
+            checkProgress();
+        });
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSections();
+            updateTimerDisplay();
+            typeCommand();
+            
+            // Observer les étapes
+            document.querySelectorAll('.step').forEach(step => {
+                stepObserver.observe(step, { attributes: true, attributeFilter: ['class'] });
+            });
+            
+            // Pré-sélectionner Linux
+            setTimeout(() => {
+                const linuxCard = document.querySelector('[data-os="linux"]');
+                if (linuxCard) selectOS(linuxCard, 'Linux');
+            }, 1000);
+            
+            // Message de bienvenue
+            setTimeout(() => {
+                showNotification('Bienvenue dans la formation Kubuntu ! 🐧');
+            }, 500);
+
+            // Animation du footer au scroll
+            const footer = document.querySelector('.footer');
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideUp 0.8s ease forwards';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            if (footer) {
+                footerObserver.observe(footer);
+            }
+        });
+
+        // Gestion des interactions tactiles pour mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 100;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe vers le haut - aller à la section suivante
+                    const currentSection = document.querySelector('.section.visible:last-child');
+                    const nextSection = currentSection?.nextElementSibling;
+                    if (nextSection && nextSection.classList.contains('section')) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    // Swipe vers le bas - aller à la section précédente
+                    const visibleSections = document.querySelectorAll('.section.visible');
+                    const currentSection = visibleSections[visibleSections.length - 2];
+                    if (currentSection) {
+                        currentSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }
+        }
+
+        // Easter egg - Animation spéciale pour Linux
+        let linuxClickCount = 0;
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('[data-os="linux"]')) {
+                linuxClickCount++;
+                if (linuxClickCount >= 5) {
+                    document.body.style.animation = 'rainbow 2s ease-in-out';
+                    showNotification('🌈 Vous adorez Linux ! Excellent choix ! 🐧');
+                    linuxClickCount = 0;
+                    
+                    // Ajouter l'animation rainbow
+                    const rainbowStyle = document.createElement('style');
+                    rainbowStyle.textContent = `
+                        @keyframes rainbow {
+                            0% { filter: hue-rotate(0deg); }
+                            25% { filter: hue-rotate(90deg); }
+                            50% { filter: hue-rotate(180deg); }
+                            75% { filter: hue-rotate(270deg); }
+                            100% { filter: hue-rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(rainbowStyle);
+                    
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        rainbowStyle.remove();
+                    }, 2000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
